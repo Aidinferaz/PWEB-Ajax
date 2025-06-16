@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 AjScheduler</h1>
+            <p>Aplikasi manajemen tugas menggunakan teknologi AJAX</p>
+        </div>
+
+        <div class="add-task-section">
+            <div class="input-group">
+                <input type="text" id="taskInput" placeholder="Masukkan tugas baru..." maxlength="100">
+                <button id="addTaskBtn" onclick="addTask()">
+                    <span id="addBtnText">Tambah</span>
+                    <span id="addBtnLoader" class="loader hidden"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalTasks">0</span>
+                <span class="stat-label">Total Tugas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="completedTasks">0</span>
+                <span class="stat-label">Selesai</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="pendingTasks">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+        </div>
+
+        <div class="tasks-section">            <div class="section-header">
+                <h2>Daftar Tugas</h2>
+                <div class="header-actions">
+                    <button id="refreshBtn" onclick="loadTasks()" title="Refresh">🔄</button>
+                    <button id="clearAllBtn" onclick="clearAllTasks()" title="Hapus Semua Data" class="btn-clear">🗑️</button>
+                </div>
+            </div>
+            
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Memuat tugas...</p>
+            </div>
+
+            <div id="tasksContainer">
+                <!-- Tasks akan dimuat di sini -->
+            </div>
+
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-icon">📋</div>
+                <h3>Belum ada tugas</h3>
+                <p>Tambahkan tugas pertama Anda untuk memulai!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+        <span id="notificationMessage"></span>
+        <button onclick="hideNotification()">✕</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
